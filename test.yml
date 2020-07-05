@@ -1,0 +1,29 @@
+---
+- hosts: all
+  tasks:
+    # ensure can run with nothing specified with no ill consequence
+    - include_role:
+        name: '{{ playbook_dir }}'
+    # now test for real
+    - name: mkdir pki directories
+      with_items:
+        - pki-1
+        - pki-2
+      file:
+        path: /tmp/{{ item }}
+        state: directory
+        mode: 0755
+    - include_role:
+        name: '{{ playbook_dir }}'
+      vars:
+        tls_src: '{{ playbook_dir }}/test-pki'
+        tls_dest: /tmp/pki-1
+    - include_role:
+        name: '{{ playbook_dir }}'
+      vars:
+        tls_src: '{{ playbook_dir }}/test-pki'
+        tls_dest: /tmp/pki-2
+        tls_dest_file_names:
+          ca: ca.pem
+          cert: client-cert.pem
+          key: client-key.pem
