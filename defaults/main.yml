@@ -5,7 +5,6 @@ tls_become: False
 tls_become_user: root
 
 # file: copying local files to target machines
-# k8s: installing local files as K8s Secrets
 tls_installer: file
 
 # operator's location of the source PKI on localhost
