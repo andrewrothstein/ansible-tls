@@ -10,6 +10,11 @@ tls_installer: file
 # operator's location of the source PKI on localhost
 #tls_src: ~/pki-dir
 
+tls_kinds:
+  - ca
+  - cert
+  - key
+
 # default src file names in the tls_src dir for the different kinds
 tls_src_file_names:
   ca: ca.pem
