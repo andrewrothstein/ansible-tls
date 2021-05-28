@@ -12,3 +12,4 @@
     mode: '{{ tls_file_vars.dest.mode }}'
     owner: '{{ tls_dest_chown.owner }}'
     group: '{{ tls_dest_chown.grp }}'
+    remote_src: '{{ tls_dest_chown.remote_src }}'
