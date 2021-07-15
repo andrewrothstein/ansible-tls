@@ -1,6 +1,6 @@
 andrewrothstein.tls
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-tls.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-tls)
+![Build Status](https://github.com/andrewrothstein/ansible-tls/actions/workflows/build.yml/badge.svg)
 
 functionality for working with TLS certificates and key pairs
 
