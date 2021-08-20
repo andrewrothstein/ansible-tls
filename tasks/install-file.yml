@@ -1,9 +1,14 @@
 ---
-- name: resolving vars for copying a {{ tls_kind }} object from {{ tls_src }} to {{ tls_dest }}
+- name: >-
+    resolving vars for copying a {{ tls_kind }} object
+    from {{ tls_src }} to {{ tls_dest }}
   include_vars:
     file: install-file-vars.yml
     name: tls_file_vars
-- name: installing a {{ tls_kind }} object from {{ tls_file_vars.src.fq_file_name }} to {{ tls_file_vars.dest.fq_file_name }}
+- name: >-
+    installing a {{ tls_kind }} object
+    from {{ tls_file_vars.src.fq_file_name }}
+    to {{ tls_file_vars.dest.fq_file_name }}
   become: '{{ tls_become }}'
   become_user: '{{ tls_become_user }}'
   copy:
@@ -12,4 +17,4 @@
     mode: '{{ tls_file_vars.dest.mode }}'
     owner: '{{ tls_dest_chown.owner }}'
     group: '{{ tls_dest_chown.grp }}'
-    remote_src: '{{ tls_dest_chown.remote_src }}'
+    remote_src: '{{ tls_dest_chown.remote_src | default(false) }}'
