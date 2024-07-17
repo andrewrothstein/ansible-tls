@@ -1,7 +1,9 @@
 ---
-- when: tls_src is defined and tls_dest is defined
+- name: Installing certs and keys
+  when: tls_src is defined and tls_dest is defined
   block:
-    - loop: '{{ tls_kinds }}'
+    - name: Installing certs and keys by kind
+      loop: '{{ tls_kinds }}'
       loop_control:
         loop_var: tls_kind
-      include_tasks: 'install-{{ tls_installer }}.yml'
+      ansible.builtin.include_tasks: 'install-{{ tls_installer }}.yml'
